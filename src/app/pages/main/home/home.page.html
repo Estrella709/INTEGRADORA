@@ -1,0 +1,48 @@
+<app-header [showMenu]="true" title="Asistencia"></app-header>
+
+<ion-content class="content">
+  <ion-list *ngIf="asistencias.length > 0; else noAsistencias" class="asistencia-list">
+    <!-- Grupo Académico -->
+    <ion-item-group>
+      <ion-item-divider class="section-divider">
+        <ion-label>Académico</ion-label>
+      </ion-item-divider>
+
+      <ion-item-group *ngFor="let group of groups.Academico">
+        <ion-item-divider (click)="viewGroupAsistencias('Academico', group)" class="group-divider">
+          <ion-label>{{ group }}</ion-label>
+
+        </ion-item-divider>
+      </ion-item-group>
+    </ion-item-group>
+
+    <!-- Grupo Administrativo -->
+    <ion-item-group>
+      <ion-item-divider class="section-divider">
+        <ion-label>Administrativo</ion-label>
+      </ion-item-divider>
+
+      <ion-item-group *ngFor="let group of groups.Administrativo">
+        <ion-item-divider (click)="viewGroupAsistencias('Administrativo', group)" class="group-divider">
+          <ion-label>{{ group }}</ion-label>
+        </ion-item-divider>
+      </ion-item-group>
+    </ion-item-group>
+  </ion-list>
+
+  <!-- No Asistencias -->
+  <ng-template #noAsistencias>
+    <ion-item class="no-asistencias">
+      <ion-label>
+        <h2>No hay asistencias registradas</h2>
+      </ion-label>
+    </ion-item>
+  </ng-template>
+
+  <!-- Botón Flotante -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addUpdateProyect()" color="primary" class="fab-button">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

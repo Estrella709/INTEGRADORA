@@ -1,0 +1,34 @@
+ion-content {
+    --background: rgb(31, 43, 103);
+    --color: rgb(31, 43, 103);
+    --padding-top: 20px;
+}
+
+ion-item {
+    font-size: 14px;
+    color: burlywood;
+    --background: rgb(31, 43, 103);
+
+    ion-icon {
+        color: crimson;
+    }
+
+    &.activate {
+        color: rgb(0, 0, 0);
+
+        ion-icon {
+            color: rgb(31, 43, 103);
+        }
+    }
+}
+
+ion-menu {
+    --width: 254px;
+    --min-widtg: 254px;
+    outline: none;
+}
+
+h4{
+    margin-top: 5px;
+    font-weight: bold;
+}

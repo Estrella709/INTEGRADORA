@@ -1,0 +1,53 @@
+<app-header [isModal]="true" [title]="'Agregar Asistencia'"></app-header>
+
+<ion-content>
+  <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()">
+    <!-- Card para tomar la foto -->
+    <ion-card color="danger">
+      <ion-card-content>
+        <img *ngIf="form.value.image" [src]="form.value.image" class="image-preview" />
+        <ion-icon *ngIf="!form.value.image" name="image-outline" class="image-placeholder"></ion-icon>
+        <br />
+        <ion-button mode="ios" color="light" (click)="takeImage()" size="small" shape="round">
+          <ion-icon color="danger" name="camera" slot="start"></ion-icon>
+          <ion-text color="danger">Tomar foto</ion-text>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Nivel -->
+    <ion-item>
+      <ion-label position="floating">Nivel</ion-label>
+      <ion-select formControlName="level">
+        <ion-select-option value="Academico">Académico</ion-select-option>
+        <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Grupo -->
+    <ion-item *ngIf="form.value.level">
+      <ion-label position="floating">Grupo</ion-label>
+      <ion-select formControlName="group">
+        <ion-select-option *ngFor="let group of groups[form.value.level]" [value]="group">
+          {{ group }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Maestro -->
+    <ion-item>
+      <ion-label position="floating">Maestros y Administrativos</ion-label>
+      <ion-select formControlName="teacher">
+        <ion-select-option *ngFor="let teacher of teachers" [value]="teacher">
+          {{ teacher }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Botón de envío -->
+    <ion-button color="danger" mode="ios" class="ion-margin" type="submit">
+      <ion-icon slot="end" name="push-outline"></ion-icon>
+      Agregar Asistencia
+    </ion-button>
+  </form>
+</ion-content>

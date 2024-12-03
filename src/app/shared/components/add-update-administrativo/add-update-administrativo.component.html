@@ -1,0 +1,36 @@
+<app-header [isModal]="true" [title]="'Agregar Administrativo'"></app-header>
+
+<ion-content>
+  <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()">
+    <!-- TITULO -->
+    <app-custom-input autocomplete="title" icon="reader-outline" [control]="form.controls.nombre" type="text" label="Docente"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.nombre.errors && form.controls.nombre.touched">
+      <div *ngIf="form.controls.nombre.errors?.['required']">El nombre es requerido</div>
+    </div>
+
+    <app-custom-input autocomplete="diasTrabajo" icon="reader-outline" [control]="form.controls.diasTrabajo" type="text" label="Días Trabajados"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.diasTrabajo.errors && form.controls.diasTrabajo.touched">
+      <div *ngIf="form.controls.diasTrabajo.errors?.['required']">Los días trabajados son requeridos</div>
+    </div>
+
+    <app-custom-input autocomplete="diasDescanso" icon="pencil-outline" [control]="form.controls.diasDescanso" type="text" label="Días de descanso"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.diasDescanso.errors && form.controls.diasDescanso.touched">
+      <div *ngIf="form.controls.diasDescanso.errors?.['required']">La descripción es requerida</div>
+    </div>
+
+    <app-custom-input autocomplete="horasTrabajo" icon="pencil-outline" [control]="form.controls.horasTrabajo" type="text" label="Horas de Trabajo"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.horasTrabajo.errors && form.controls.horasTrabajo.touched">
+      <div *ngIf="form.controls.horasTrabajo.errors?.['required']">La descripción es requerida</div>
+    </div>
+
+    <!-- SUBIR DOCENTE NUEVO -->
+    <ion-button color="danger" mode="ios" class="ion-margin" type="submit">
+      <ion-icon slot="end" name="push-outline"></ion-icon>
+      Agregar Administrativo
+    </ion-button>
+  </form>
+</ion-content>

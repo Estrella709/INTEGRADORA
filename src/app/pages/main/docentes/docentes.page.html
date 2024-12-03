@@ -1,0 +1,52 @@
+<app-header [showMenu]="true" title="Docentes"></app-header>
+<ion-content class="docentes-page">
+  <!-- ======= LISTA DE DOCENTES ======= -->
+  <ion-list class="docente-list" *ngIf="!loading">
+    <ion-item-sliding class="docente-item" *ngFor="let docente of docentes">
+      <ion-item lines="full">
+        <ion-avatar slot="start">
+          <img [src]="docente.foto || 'assets/avatar-placeholder.jpg'" alt="Foto docente" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="nombre">{{ docente.nombre }}</h2>
+          <p class="info">Días de trabajo: {{ docente.diasTrabajo }}</p>
+          <p class="info">Días de descanso: {{ docente.diasDescanso }}</p>
+          <p class="info">Horas de trabajo: {{ docente.horasTrabajo }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- ======= OPCIONES ======= -->
+      <ion-item-options side="end">
+        <ion-item-option (click)="addUpdateDocente(docente)" color="tertiary">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="confirmDeleteDocente(docente)" color="danger">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- ======= LOADING ======= -->
+  <ion-list *ngIf="loading">
+    <ion-item *ngFor="let p of [1, 1, 1, 1, 1]">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ======= SIN DOCENTES ======= -->
+  <div *ngIf="!loading && !docentes.length" class="empty-state">
+    <ion-icon name="people-outline" size="large" color="medium"></ion-icon>
+    <h3>No hay docentes disponibles</h3>
+  </div>
+
+  <!-- ======= NUEVO DOCENTE ======= -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addUpdateDocente()" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

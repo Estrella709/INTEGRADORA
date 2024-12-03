@@ -1,0 +1,52 @@
+/* auth.page.scss */
+
+  /* Estilo para ion-content */
+  ion-content.login-content {
+    --ion-background-color: var(--custom-beige-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  /* Fondo de nubes */
+  .cloud-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--custom-beige-color), #9d4646);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+
+  
+  /* Estilo para el formulario de autenticación */
+  .auth-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: rgb(223, 199, 199);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .validators {
+    color: var(--ion-color-danger);
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .submit {
+    margin-top: 20px;
+  }
+  
+  ion-button[disabled] {
+    opacity: 0.5;
+  }

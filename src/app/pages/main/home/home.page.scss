@@ -1,0 +1,59 @@
+/* Contenedor principal */
+.content {
+  --background: #f4f7fa; /* Fondo gris claro */
+  padding: 16px; /* Espaciado general */
+}
+
+/* Lista de asistencias */
+.asistencia-list {
+  ion-item-group {
+    margin-bottom: 24px;
+
+    .section-divider {
+      background: #d20101; /* Azul vibrante */
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 12px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .group-divider {
+      background: #e9ecef; /* Fondo gris claro */
+      color: #343a40; /* Texto gris oscuro */
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .group-divider:hover {
+      background: #dee2e6; /* Fondo más claro al pasar el cursor */
+      transform: scale(1.02);
+    }
+  }
+}
+
+/* Mensaje de no asistencias */
+.no-asistencias {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #dc3545; /* Texto rojo */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Botón flotante */
+.fab-button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+}

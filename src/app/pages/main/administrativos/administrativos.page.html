@@ -1,0 +1,52 @@
+<app-header [showMenu]="true" title="Administrativo"></app-header>
+<ion-content class="administrativo-page">
+  <!-- ======= LISTA DE ADMINISTRATIVOS ======= -->
+  <ion-list class="administrativo-list" *ngIf="!loading">
+    <ion-item-sliding class="administrativo-item" *ngFor="let administrativo of administrativos">
+      <ion-item lines="full">
+        <ion-avatar slot="start">
+          <img [src]="administrativo.foto || 'assets/avatar-placeholder.jpg'" alt="Foto administrativo" />
+        </ion-avatar>
+        <ion-label>
+          <h2 class="nombre">{{ administrativo.nombre }}</h2>
+          <p class="info">Días de trabajo: {{ administrativo.diasTrabajo }}</p>
+          <p class="info">Días de descanso: {{ administrativo.diasDescanso }}</p>
+          <p class="info">Horas de trabajo: {{ administrativo.horasTrabajo }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- ======= OPCIONES ======= -->
+      <ion-item-options side="end">
+        <ion-item-option (click)="addUpdateAdministrativo(administrativo)" color="tertiary">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="confirmDeleteAdministrativo(administrativo)" color="danger">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- ======= LOADING ======= -->
+  <ion-list *ngIf="loading">
+    <ion-item *ngFor="let p of [1, 1, 1, 1, 1]">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- ======= SIN ADMINISTRATIVOS ======= -->
+  <div *ngIf="!loading && !administrativos.length" class="empty-state">
+    <ion-icon name="people-outline" size="large" color="medium"></ion-icon>
+    <h3>No hay administrativos disponibles</h3>
+  </div>
+
+  <!-- ======= NUEVO ADMINISTRATIVO ======= -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addUpdateAdministrativo()" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

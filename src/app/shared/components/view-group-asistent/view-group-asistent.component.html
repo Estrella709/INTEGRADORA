@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asistencias de {{ group }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="asistencias.length > 0; else noAsistencias">
+    <ion-item *ngFor="let asistencia of asistencias">
+      <ion-thumbnail slot="start">
+        <img [src]="asistencia.image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ asistencia.group }}</h2>
+        <h2>{{ asistencia.teacher }}</h2>
+        <h2>{{ asistencia.level }}</h2>
+        <p>{{ asistencia.date | date: 'medium' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noAsistencias>
+    <ion-item>
+      <ion-label>
+        <h2>No hay asistencias registradas para este grupo</h2>
+      </ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,102 @@
+.docentes-page {
+  --background: radial-gradient(circle, #fdfcfb, #e2d1f9);
+  background: var(--background);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .docente-list {
+    margin: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+
+    .docente-item {
+      margin: 8px 0;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      ion-avatar {
+        img {
+          border-radius: 50%;
+          border: 2px solid #c6a3ff;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      .nombre {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #7e57c2;
+        text-shadow: 1px 1px 3px rgba(126, 87, 194, 0.5);
+      }
+
+      .info {
+        font-size: 0.9rem;
+        color: #4a4a4a;
+        font-style: italic;
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #9575cd;
+    animation: fadeIn 1s ease-in-out;
+
+    ion-icon {
+      font-size: 5rem;
+      color: #b39ddb;
+      text-shadow: 0 4px 8px rgba(179, 157, 219, 0.5);
+    }
+
+    h3 {
+      margin-top: 16px;
+      font-size: 1.4rem;
+      color: #5e35b1;
+      text-shadow: 0 2px 4px rgba(94, 53, 177, 0.3);
+    }
+  }
+
+  ion-fab-button {
+    --background: linear-gradient(135deg, #8e24aa, #d81b60);
+    --color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+
+    ion-icon {
+      font-size: 1.6rem;
+    }
+  }
+
+  /* ======= ANIMACIONES ======= */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
